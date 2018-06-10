@@ -10,22 +10,14 @@
     "url": "github.com/airbugg"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=8"
   },
   "scripts": {
     "postinstall": "alfy-init",
     "preuninstall": "alfy-cleanup"
   },
-  "files": [
-    "index.js",
-    "icon.png",
-    "info.plist"
-  ],
-  "keywords": [
-    "alfred",
-    "workflow",
-    "alfy"
-  ],
+  "files": ["index.js", "icon.png", "info.plist"],
+  "keywords": ["alfred", "workflow", "alfy"],
   "dependencies": {
     "alfy": "^0.6.0",
     "eslint": "^4.19.1",
