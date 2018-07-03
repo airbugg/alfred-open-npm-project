@@ -16,13 +16,25 @@
     "postinstall": "alfy-init",
     "preuninstall": "alfy-cleanup"
   },
-  "files": ["index.js", "icon.png", "info.plist"],
-  "keywords": ["alfred", "workflow", "alfy"],
+  "files": [
+    "index.js",
+    "icon.png",
+    "info.plist"
+  ],
+  "keywords": [
+    "alfred",
+    "workflow",
+    "alfy"
+  ],
   "dependencies": {
+    "@octokit/rest": "^15.8.1",
     "alfy": "^0.6.0",
     "eslint": "^4.19.1",
+    "execa": "^0.10.0",
     "fast-glob": "^2.2.0",
-    "glob": "^7.1.2"
+    "glob": "^7.1.2",
+    "ramda": "^0.25.0",
+    "rxjs": "^6.2.0"
   },
   "devDependencies": {
     "eslint-config-prettier": "^2.9.0",
