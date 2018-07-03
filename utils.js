@@ -1,19 +1,46 @@
 const alfy = require('alfy')
-const execa = require('execa')
 
-module.exports.withCache = (id, promiseFn, filename) => {
+const shouldRerun = (module.exports.shouldRerun = () => !process.env.ALFRED_RERUN)
+
+const pleaseWaitResult = () => ({
+  items: [
+    {
+      title: 'Please wait',
+      subtitle: 'Scanning...',
+    },
+  ],
+})
+
+module.exports.withCache = (id, promiseFn) => {
   const cachedResult = alfy.cache.get(id)
 
   return new Promise(resolve => {
-    if (cachedResult) {
+    if (cachedResult && shouldRerun()) {
       return resolve(cachedResult)
     }
 
-    execa('node', [filename], { env: { ALFRED_BG_UPDATE_PROCESS: true, detached: true } })
-
-    return promiseFn().then(result => {
-      alfy.cache.set(id, process.env.ALFRED_BG_UPDATE_PROCESS ? 'fuuuuuuuuuu' : result)
+    return promiseFn().then((result = pleaseWaitResult()) => {
+      alfy.cache.set(id, result)
       resolve(result)
     })
   })
 }
+
+const withDefaults = opts => ({
+  variables: {
+    ALFRED_RERUN: process.env.ALFRED_RERUN ? 1 : 0,
+  },
+  ...opts,
+})
+
+module.exports.outputToAlfred = ({ items, opts = {} }) =>
+  console.log(
+    JSON.stringify(
+      {
+        items,
+        ...withDefaults(opts),
+      },
+      null,
+      '\t'
+    )
+  )

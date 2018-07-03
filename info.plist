@@ -35,6 +35,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>C5EFBA6A-70D0-4229-82ED-E35A423A2138</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -115,6 +128,13 @@
 			<integer>50</integer>
 			<key>ypos</key>
 			<integer>260</integer>
+		</dict>
+		<key>C5EFBA6A-70D0-4229-82ED-E35A423A2138</key>
+		<dict>
+			<key>xpos</key>
+			<integer>80</integer>
+			<key>ypos</key>
+			<integer>80</integer>
 		</dict>
 		<key>F2B668AD-5C3D-46BC-BB82-EF63E0BE7FA6</key>
 		<dict>
